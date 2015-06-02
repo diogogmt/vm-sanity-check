@@ -1,0 +1,129 @@
+<div class="jumbotron">
+    <h2>Virtual Machine Sanity Check</h2>
+    <p class="lead">
+        <img src="images/vm-logo.png" /><br>
+    </p>
+    <p class="lead">Check the sanity of your virtual machine in the cloud</p>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">OS</h1>
+            <ul>
+                <li>
+                    Release: {{os.release}}
+                </li>
+                <li>
+                    Arch: {{os.arch}}
+                </li>
+                <li>
+                    Platform: {{os.platform}}
+                </li>
+                <li>
+                    Type: {{os.type}}
+                </li>
+                <li>
+                    Hostname: {{os.hostname}}
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Memory</h1>
+            <ul>
+                <li>
+                    Total: {{memory.total}} GB
+                </li>
+                <li>
+                    Free: {{memory.free}} GB
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">CPUs</h1>
+            <ul>
+                <li>
+                    Total: {{cpus.length}} core(s)
+                </li>
+            </ul>
+            <ul ng-repeat="core in cpus">
+                <li>
+                    <b>Model</b>: {{core.model}} -- <b>Speed</b>: {{core.speed}}
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Storage</h1>
+            <ul>
+                <li>
+                    Total: {{storage.length}} mount(s)
+                </li>
+            </ul>
+            <ul ng-repeat="volume in storage">
+                <li>
+                    Mount name: {{volume.mount}}
+                </li>
+                <ul>
+                    <li>
+                        File System: {{volume.filesystem}}
+                    </li>
+                    <li>
+                        Size: {{volume.size}} GB
+                    </li>
+                    <li>
+                        Used: {{volume.used}} GB
+                    </li>
+                    <li>
+                        Available: {{volume.available}} GB
+                    </li>
+                </ul>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Network Interfaces</h1>
+            <ul>
+                <li>
+                    Total: {{totalInterfaces}} interface(s)
+                </li>
+            </ul>
+            <ul ng-repeat="(name, binds) in networkInterfaces">
+                <li>
+                    Name: {{name}}
+                </li>
+                <li>
+                    <ul ng-repeat="bind in binds">
+                        <li>
+                            Address: {{bind.address}}
+                        </li>
+                        <li>
+                            Netmask: {{bind.netmask}}
+                        </li>
+                        <li>
+                            Family: {{bind.family}}
+                        </li>
+                        <li>
+                            MAC: {{bind.mac}}
+                        </li>
+                        <li>
+                            Scope ID: {{bind.scopeid}}
+                        </li>
+                        <li>
+                            Internal: {{bind.internal}}
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
