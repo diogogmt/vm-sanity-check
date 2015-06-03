@@ -36,10 +36,11 @@ router.get('/memory', function(req, res) {
 router.get('/storage', function(req, res) {
   df(function (error, response) {
     if (error) { return res.json(400, error)}
+    console.log('response: ', response);
     response.forEach(function (item) {
-      item.size = (((item.size / 1024) / 1024) / 1024);
-      item.used = (((item.used / 1024) / 1024) / 1024);
-      item.available = (((item.available / 1024) / 1024) / 1024);
+      item.size = (((item.size / 2) / 1024) / 1024);
+      item.used = (((item.used / 2) / 1024) / 1024);
+      item.available = (((item.available / 2) / 1024) / 1024);
     });
     res.json(response);
   });

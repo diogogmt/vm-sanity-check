@@ -70,21 +70,25 @@
             </ul>
             <ul ng-repeat="volume in storage">
                 <li>
-                    Mount name: {{volume.mount}}
+                    Mount name: <b>{{volume.mountpoint}}</b>
                 </li>
                 <ul>
                     <li>
                         File System: {{volume.filesystem}}
                     </li>
                     <li>
-                        Size: {{volume.size}} GB
+                        Percentage: {{volume.percent}} %
                     </li>
                     <li>
-                        Used: {{volume.used}} GB
+                        Size: {{volume.used + volume.available | number:0}} GB
                     </li>
                     <li>
-                        Available: {{volume.available}} GB
+                        Used: {{volume.used | number:0}} GB
                     </li>
+                    <li>
+                        Available: {{volume.available | number:0}} GB
+                    </li>
+
                 </ul>
             </ul>
         </div>
